@@ -18,6 +18,7 @@ public class Entity implements InputProcessor {
         game.addEntity(this);
         isLiving = true;
         isInputListener = false;
+        zIndex = 0;
     }
 
     public void start() {

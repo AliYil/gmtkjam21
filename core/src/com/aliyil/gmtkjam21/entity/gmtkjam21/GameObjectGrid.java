@@ -30,21 +30,21 @@ public class GameObjectGrid {
         return getFromPosition(new Vector2(x, y));
     }
 
-    public List<GameObject> getFromPosition(Vector2 pos){
+    public List<GameObject> getFromPosition(Vector2 gridPos){
         List<GameObject> found = new ArrayList<>(1);
         for (GameObject gameObject : getGameObjects()) {
-            if(toGrid(gameObject.getPosVector()).epsilonEquals(pos)){
+            if(toGrid(gameObject.getPosVector()).epsilonEquals(gridPos)){
                 found.add(gameObject);
             }
         }
         return found;
     }
 
-    public Vector2 toWorld(Vector2 pos){
+    public static Vector2 toWorld(Vector2 pos){
         return pos.cpy().scl(cellSize);
     }
 
-    public Vector2 toGrid(Vector2 pos){
+    public static Vector2 toGrid(Vector2 pos){
         return pos.cpy().scl(1f/cellSize);
     }
 
@@ -58,5 +58,13 @@ public class GameObjectGrid {
         for (GameObject gameObject : getGameObjects()) {
             gameObject.start();
         }
+    }
+
+    public <T> boolean testObject(Class<T> type, Vector2 gridPos){
+        List<GameObject> objectsFromPos = getFromPosition(gridPos);
+        for (GameObject gameObject : objectsFromPos) {
+            if(gameObject.getClass() == type) return true;
+        }
+        return false;
     }
 }

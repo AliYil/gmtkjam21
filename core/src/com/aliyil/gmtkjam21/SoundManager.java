@@ -1,5 +1,7 @@
 package com.aliyil.gmtkjam21;
 
+import com.badlogic.gdx.audio.Sound;
+
 public final class SoundManager {
     private Game gameInstance;
 
@@ -7,11 +9,12 @@ public final class SoundManager {
         this.gameInstance = gameInstance;
     }
 
-//    public void note1(float pitch) {
-//        float vol = 1f;
-//        Sound s = gameInstance.getResourceManager().note1;
-//        s.play(vol, pitch, 0);
-//    }
+    public void jump() {
+        float vol = 1f;
+        Sound s = gameInstance.getResourceManager().jump;
+        s.stop();
+        s.play(vol);
+    }
 
 //    public void startBackground() {
 //        float vol = 1f;

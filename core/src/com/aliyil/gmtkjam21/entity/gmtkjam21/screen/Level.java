@@ -7,7 +7,7 @@ import com.aliyil.gmtkjam21.entity.gmtkjam21.GameObjectGrid;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.PlayerControl;
 import com.badlogic.gdx.graphics.Color;
 
-public class Level extends Screen {
+public abstract class Level extends Screen {
     private final GameObjectGrid tileGrid;
 
     protected Character masterCharacter;
@@ -23,12 +23,9 @@ public class Level extends Screen {
     public void start() {
         super.start();
 
-        masterCharacter = new Character(getGameInstance());
-        slaveCharacter = new Character(getGameInstance());
-
-        masterCharacter.setColor(Color.CORAL);
-        slaveCharacter.setColor(Color.CYAN);
-
+        masterCharacter = new Character(getGameInstance(), getGameInstance().getResourceManager().duck2.getRegions());
+        slaveCharacter = new Character(getGameInstance(), getGameInstance().getResourceManager().duck1.getRegions());
+//        slaveCharacter.setStateTime(.25f);
 
         playerControl = new PlayerControl(getGameInstance());
         playerControl.setMaster(masterCharacter);
@@ -37,7 +34,7 @@ public class Level extends Screen {
 
     }
 
-    protected GameObjectGrid getTileGrid() {
+    public GameObjectGrid getTileGrid() {
         return tileGrid;
     }
 
@@ -47,4 +44,6 @@ public class Level extends Screen {
         getTileGrid().killAll();
         playerControl.kill();
     }
+
+    public abstract void toNextLevel();
 }

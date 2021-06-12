@@ -4,14 +4,21 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public final class ResourceManager {
     //Resources
     public BitmapFont bitmapFont;
 
-//    public Texture t;
-//
-//    public Sound s;
+    public Texture grass1;
+    public Texture grass2;
+    public Texture tree1;
+    public Texture tree2;
+
+    public TextureAtlas duck1;
+    public TextureAtlas duck2;
+
+    public Sound jump;
 
     private Game gameInstance;
     private AssetManager assetManager;
@@ -27,9 +34,15 @@ public final class ResourceManager {
     void loadResources() {
         assetManager.load("fonts/font.fnt", BitmapFont.class);
 
-//        assetManager.load("textures/.png", Texture.class);
+        assetManager.load("sprites/grass1.png", Texture.class);
+        assetManager.load("sprites/grass2.png", Texture.class);
+        assetManager.load("sprites/tree1.png", Texture.class);
+        assetManager.load("sprites/tree2.png", Texture.class);
+
+        assetManager.load("sprites/duck1.atlas", TextureAtlas.class);
+        assetManager.load("sprites/duck2.atlas", TextureAtlas.class);
 //
-//        assetManager.load("sounds/.wav", Sound.class);
+        assetManager.load("sounds/jump.wav", Sound.class);
 
         gameInstance.getParticleEffectManager().loadResources();
     }
@@ -42,9 +55,15 @@ public final class ResourceManager {
         bitmapFont = assetManager.get("fonts/font.fnt", BitmapFont.class);
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
-//        t = assetManager.get("textures/.png", Texture.class);
+        grass1 = assetManager.get("sprites/grass1.png", Texture.class);
+        grass2 = assetManager.get("sprites/grass2.png", Texture.class);
+        tree1 = assetManager.get("sprites/tree1.png", Texture.class);
+        tree2 = assetManager.get("sprites/tree2.png", Texture.class);
 
-//        s = assetManager.get("sounds/.wav", Sound.class);
+        duck1 = assetManager.get("sprites/duck1.atlas", TextureAtlas.class);
+        duck2 = assetManager.get("sprites/duck2.atlas", TextureAtlas.class);
+
+        jump = assetManager.get("sounds/jump.wav", Sound.class);
     }
 
     void dispose() {

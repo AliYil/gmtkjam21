@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class SpriteEntity extends GameObject {
     protected boolean canAutoUpdateCenter;
+
     protected float stateTime;
     protected boolean isAnimating;
     protected float aspectRatio = 1;
@@ -21,12 +22,18 @@ public class SpriteEntity extends GameObject {
     private Animation<TextureAtlas.AtlasRegion> animation;
     private int latestKeyframeIndex;
 
+    protected boolean flipHorizontal;
+    protected boolean flipVertical;
+
     public SpriteEntity(Game game, Texture texture) {
         super(game);
         sprite = new Sprite(texture);
         sprite.setOriginCenter();
         canAutoUpdateCenter = true;
         aspectRatio = (float) texture.getWidth() / (float) texture.getHeight();
+
+        flipHorizontal = false;
+        flipVertical = false;
     }
 
     public SpriteEntity(Game game, float frameDuration, Array<TextureAtlas.AtlasRegion> textures) {
@@ -37,10 +44,15 @@ public class SpriteEntity extends GameObject {
         aspectRatio = (float) textures.get(0).getRegionWidth() / (float) textures.get(0).getRegionHeight();
 
         animation = new Animation<TextureAtlas.AtlasRegion>(frameDuration, textures);
-        animation.setPlayMode(Animation.PlayMode.NORMAL);
+        animation.setPlayMode(Animation.PlayMode.LOOP);
         isAnimated = true;
         getSprite().setRegion(animation.getKeyFrame(0));
+
+        flipHorizontal = false;
+        flipVertical = false;
     }
+
+
 
     public Animation getAnimation() {
         if (isAnimated)
@@ -78,6 +90,7 @@ public class SpriteEntity extends GameObject {
                     getSprite().setRegion(animation.getKeyFrame(stateTime));
                 }
             }
+            sprite.setFlip(flipHorizontal, flipVertical);
             sprite.setColor(getColor());
             sprite.setAlpha(getAlpha());
             sprite.draw(batch);
@@ -155,5 +168,9 @@ public class SpriteEntity extends GameObject {
 
     public boolean overlaps(Rectangle rect) {
         return getSprite().getBoundingRectangle().overlaps(rect);
+    }
+
+    public void setStateTime(float stateTime) {
+        this.stateTime = stateTime;
     }
 }

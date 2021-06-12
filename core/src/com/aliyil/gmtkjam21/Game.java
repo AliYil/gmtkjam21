@@ -72,7 +72,7 @@ public class Game extends ApplicationAdapter {
         viewport.apply(false);
 
         getSharedValues().bgColor =
-                new Color(0.05f, 0.05f, 0.13f, 1f);
+                new Color(0.7f, 0.7f, 1f, 1f);
 //                new Color(0.7f, 0.7f, 0.7f, 1f);
 
         Entity inputCalc = new InputCalculator(this, viewport);
