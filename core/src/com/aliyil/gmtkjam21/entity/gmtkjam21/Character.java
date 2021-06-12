@@ -11,16 +11,16 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 public class Character extends SpriteEntity {
+    private float animation = 1;
+    private Vector2 targetPos = null;
+    private Vector2 originalPos = null;
+
     public Character(Game game, Array<TextureAtlas.AtlasRegion> textures) {
         super(game, .5f, textures);
         setSize(GameObjectGrid.cellSize, GameObjectGrid.cellSize);
         enableMoving(true);
         zIndex = 30;
     }
-
-    private float animation = 1;
-    private Vector2 targetPos = null;
-    private Vector2 originalPos = null;
 
     @Override
     public void tick() {
@@ -40,7 +40,6 @@ public class Character extends SpriteEntity {
     }
 
     public void move(int direction){
-        getGameInstance().getSoundManager().jump();
         animation = 0f;
         switch (direction){
             case 0:
@@ -59,6 +58,21 @@ public class Character extends SpriteEntity {
             case 3:
                 originalPos = getPosVector();
                 targetPos = getPosVector().cpy().add(-GameObjectGrid.cellSize, 0);
+                flipHorizontal = false;
+                break;
+            case 10:
+            case 12:
+                originalPos = getPosVector();
+                targetPos = getPosVector();
+                break;
+            case 11:
+                originalPos = getPosVector();
+                targetPos = getPosVector();
+                flipHorizontal = true;
+                break;
+            case 13:
+                originalPos = getPosVector();
+                targetPos = getPosVector();
                 flipHorizontal = false;
                 break;
             default:

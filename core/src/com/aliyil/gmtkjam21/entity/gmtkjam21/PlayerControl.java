@@ -45,6 +45,10 @@ public class PlayerControl extends Entity {
             case 1: return 3;
             case 2: return 0;
             case 3: return 1;
+//            case 10: return 12;
+//            case 11: return 13;
+//            case 12: return 10;
+//            case 13: return 11;
         }
         throw new RuntimeException("Invalid direction");
     }
@@ -64,23 +68,48 @@ public class PlayerControl extends Entity {
             Vector2 masterNewGridPos = GameObjectGrid.toGrid(master.getPosVector()).add(getDirectionVector(direction));
             Vector2 slaveNewGridPos = GameObjectGrid.toGrid(slave.getPosVector()).add(getDirectionVector(direction).scl(-1));
 
+            boolean masterMoved = false;
+            boolean slaveMoved = false;
+
             if(!isObstacle(masterNewGridPos)){
                 master.move(direction);
+                masterMoved = true;
                 if(!isObstacle(slaveNewGridPos)){
                     slave.move(reverseDirection(direction));
+                    slaveMoved = true;
+                }else{
+                    slave.move(reverseDirection(direction)+10);
                 }
+            }else{
+                master.move(direction+10);
+                slave.move(reverseDirection(direction)+10);
             }
 
             if(masterNewGridPos.epsilonEquals(slaveNewGridPos)){
                 if(getGrid().testObject(Goal.class, masterNewGridPos)){
                     master.move(direction);
                     slave.move(reverseDirection(direction));
+                    masterMoved = true;
+                    slaveMoved = true;
 
-                    getLevel().toNextLevel();
+                    Win win = new Win(getGameInstance()){
+                        @Override
+                        public void onComplete() {
+                            getLevel().toNextLevel();
+                        }
+                    };
+                    win.start();
+
                     stop();
                 }else{
                     move(reverseDirection(direction));
                 }
+            }
+
+            if(masterMoved || slaveMoved){
+                getGameInstance().getSoundManager().jump();
+            }else{
+                getGameInstance().getSoundManager().jump2();
             }
         }
     }

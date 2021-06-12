@@ -4,6 +4,7 @@ import com.aliyil.gmtkjam21.Game;
 import com.aliyil.gmtkjam21.entity.core.Screen;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.Character;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.GameObjectGrid;
+import com.aliyil.gmtkjam21.entity.gmtkjam21.LevelStart;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.PlayerControl;
 import com.badlogic.gdx.graphics.Color;
 
@@ -31,6 +32,8 @@ public abstract class Level extends Screen {
         playerControl.setMaster(masterCharacter);
         playerControl.setSlave(slaveCharacter);
         playerControl.start();
+
+        new LevelStart(getGameInstance()).start();
 
     }
 

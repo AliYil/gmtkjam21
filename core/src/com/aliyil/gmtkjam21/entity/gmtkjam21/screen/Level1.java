@@ -49,6 +49,6 @@ public class Level1 extends Level {
 
     @Override
     public void toNextLevel() {
-        new End(getGameInstance()).start();
+        new Level1(getGameInstance()).start();
     }
 }
