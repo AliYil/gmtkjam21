@@ -1,13 +1,13 @@
 package com.aliyil.gmtkjam21.entity.gmtkjam21;
 
 import com.aliyil.gmtkjam21.Game;
-import com.aliyil.gmtkjam21.entity.core.Entity;
+import com.aliyil.gmtkjam21.entity.core.GameObject;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.Level;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
-public class PlayerControl extends Entity {
+public class PlayerControl extends GameObject {
     private Character master;
     private Character slave;
 
@@ -15,6 +15,13 @@ public class PlayerControl extends Entity {
         super(game);
         enableInputListener(0);
     }
+
+    @Override
+    public void start() {
+        super.start();
+    }
+
+    private boolean isCharactersAligned = false;
 
     @Override
     public boolean keyDown(int keycode) {
@@ -34,6 +41,16 @@ public class PlayerControl extends Entity {
             case Input.Keys.LEFT:
             case Input.Keys.A:
                 move(3);
+                break;
+            case Input.Keys.R:
+                Restart restart = new Restart(getGameInstance()){
+                    @Override
+                    public void onComplete() {
+                        getLevel().restart();
+                    }
+                };
+                restart.start();
+                stop();
                 break;
         }
         return super.keyDown(keycode);
@@ -106,11 +123,37 @@ public class PlayerControl extends Entity {
                 }
             }
 
+            if(!masterMoved) masterNewGridPos = GameObjectGrid.toGrid(master.getPosVector());
+            if(!slaveMoved) slaveNewGridPos = GameObjectGrid.toGrid(slave.getPosVector());
+
             if(masterMoved || slaveMoved){
                 getGameInstance().getSoundManager().jump();
+                Goal goal = (Goal)getGameInstance().getEntityOrNull(Goal.class);
+                Vector2 goalGridPos = GameObjectGrid.toGrid(goal.getPosVector());
+                checkForCharacterAlignment(masterNewGridPos, slaveNewGridPos, goalGridPos);
             }else{
                 getGameInstance().getSoundManager().jump2();
             }
+        }
+    }
+
+    public void checkForCharacterAlignment(Vector2 masterNewGridPos, Vector2 slaveNewGridPos, Vector2 goalGridPos){
+        if(masterNewGridPos.cpy().rotateAround(goalGridPos, 180).epsilonEquals(slaveNewGridPos, .1f)){
+            if(!isCharactersAligned){
+                getGameInstance().getSoundManager().beep();
+            }
+            isCharactersAligned = true;
+        }else{
+            isCharactersAligned = false;
+        }
+    }
+
+    @Override
+    public void shapeRender(ShapeRenderer shapeRenderer) {
+        super.shapeRender(shapeRenderer);
+        if(isCharactersAligned){
+            shapeRenderer.setColor(.1f, 1f, .1f, .2f);
+            shapeRenderer.rectLine(master.getPosVector(), slave.getPosVector(), 5);
         }
     }
 
@@ -136,4 +179,6 @@ public class PlayerControl extends Entity {
     private Level getLevel(){
         return (Level)getGameInstance().getCurrentScreen();
     }
+
+
 }

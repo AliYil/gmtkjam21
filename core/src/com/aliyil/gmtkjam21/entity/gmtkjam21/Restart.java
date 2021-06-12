@@ -4,10 +4,10 @@ import com.aliyil.gmtkjam21.Game;
 import com.aliyil.gmtkjam21.entity.core.Text;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class Win extends Text {
+public class Restart extends Text {
     private float timer = 0;
 
-    public Win(Game game) {
+    public Restart(Game game) {
         super(game, "");
         zIndex = 5;
     }
@@ -15,7 +15,6 @@ public class Win extends Text {
     @Override
     public void start() {
         super.start();
-        getGameInstance().getSoundManager().win();
     }
 
     @Override
@@ -23,7 +22,7 @@ public class Win extends Text {
         super.tick();
         timer += dts();
 
-        if(timer > 1){
+        if(timer > .5f){
             onComplete();
             kill();
         }
@@ -33,7 +32,7 @@ public class Win extends Text {
     public void shapeRender(ShapeRenderer shapeRenderer) {
         super.shapeRender(shapeRenderer);
         shapeRenderer.setColor(getSharedValues().bgColor);
-        shapeRenderer.circle(getGameInstance().getCamera().position.x, getGameInstance().getCamera().position.y, (timer-.5f)*(Game.w));
+        shapeRenderer.circle(getGameInstance().getCamera().position.x, getGameInstance().getCamera().position.y,timer*(Game.w));
     }
 
     public void onComplete(){

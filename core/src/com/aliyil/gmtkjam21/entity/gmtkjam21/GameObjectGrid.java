@@ -56,7 +56,8 @@ public class GameObjectGrid {
 
     public void startAll(){
         for (GameObject gameObject : getGameObjects()) {
-            gameObject.start();
+            if(!gameObject.isRunning())
+                gameObject.start();
         }
     }
 

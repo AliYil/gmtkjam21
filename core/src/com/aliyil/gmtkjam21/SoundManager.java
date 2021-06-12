@@ -28,6 +28,12 @@ public final class SoundManager {
         s.play(vol);
     }
 
+    public void beep() {
+        float vol = 1f;
+        Sound s = gameInstance.getResourceManager().beep;
+        s.play(vol);
+    }
+
 //    public void startBackground() {
 //        float vol = 1f;
 //        Sound s = gameInstance.getResourceManager().backgroundSound;

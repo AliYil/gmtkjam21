@@ -18,7 +18,6 @@ public class Character extends SpriteEntity {
     public Character(Game game, Array<TextureAtlas.AtlasRegion> textures) {
         super(game, .5f, textures);
         setSize(GameObjectGrid.cellSize, GameObjectGrid.cellSize);
-        enableMoving(true);
         zIndex = 30;
     }
 

@@ -244,4 +244,11 @@ public class Game extends ApplicationAdapter {
     public OrthographicCamera getCamera() {
         return camera;
     }
+
+    public <T> Entity getEntityOrNull(Class<T> type){
+        for (Entity entity : entities) {
+            if(entity.getClass() == type) return entity;
+        }
+        return null;
+    }
 }

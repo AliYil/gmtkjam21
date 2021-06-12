@@ -17,9 +17,11 @@ public final class ResourceManager {
 
     public TextureAtlas duck1;
     public TextureAtlas duck2;
+    public TextureAtlas goal;
 
     public Sound jump;
     public Sound win;
+    public Sound beep;
 
     private Game gameInstance;
     private AssetManager assetManager;
@@ -42,9 +44,11 @@ public final class ResourceManager {
 
         assetManager.load("sprites/duck1.atlas", TextureAtlas.class);
         assetManager.load("sprites/duck2.atlas", TextureAtlas.class);
+        assetManager.load("sprites/goal.atlas", TextureAtlas.class);
 //
         assetManager.load("sounds/jump.wav", Sound.class);
         assetManager.load("sounds/win.wav", Sound.class);
+        assetManager.load("sounds/beep.wav", Sound.class);
 
         gameInstance.getParticleEffectManager().loadResources();
     }
@@ -64,9 +68,11 @@ public final class ResourceManager {
 
         duck1 = assetManager.get("sprites/duck1.atlas", TextureAtlas.class);
         duck2 = assetManager.get("sprites/duck2.atlas", TextureAtlas.class);
+        goal = assetManager.get("sprites/goal.atlas", TextureAtlas.class);
 
         jump = assetManager.get("sounds/jump.wav", Sound.class);
         win = assetManager.get("sounds/win.wav", Sound.class);
+        beep = assetManager.get("sounds/beep.wav", Sound.class);
     }
 
     void dispose() {

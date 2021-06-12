@@ -17,7 +17,7 @@ public class TileBase extends SpriteEntity {
         super.shapeRender(shapeRenderer);
         float cellSize = GameObjectGrid.cellSize;
         float cellSizeHalf = cellSize/2f;
-        shapeRenderer.setColor(.1f, .1f, .1f, .1f);
+        shapeRenderer.setColor(.1f, .1f, .1f, .06f);
         shapeRenderer.rect(getX()-cellSizeHalf, getY()-cellSizeHalf, 4, cellSize);
         shapeRenderer.rect(getX()-cellSizeHalf+4, getY()-cellSizeHalf, cellSize-4, 4);
     }

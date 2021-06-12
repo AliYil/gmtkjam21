@@ -12,6 +12,11 @@ public class LevelStart extends Text {
     }
 
     @Override
+    public void start() {
+        super.start();
+    }
+
+    @Override
     public void tick() {
         super.tick();
         timer += dts();
@@ -25,6 +30,6 @@ public class LevelStart extends Text {
     public void shapeRender(ShapeRenderer shapeRenderer) {
         super.shapeRender(shapeRenderer);
         shapeRenderer.setColor(getSharedValues().bgColor);
-        shapeRenderer.circle(0, 0, (.3f-timer)*(Game.w));
+        shapeRenderer.circle(getGameInstance().getCamera().position.x, getGameInstance().getCamera().position.y, (.3f-timer)*(Game.w));
     }
 }

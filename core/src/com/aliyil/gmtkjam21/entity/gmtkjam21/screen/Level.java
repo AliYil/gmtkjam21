@@ -4,6 +4,7 @@ import com.aliyil.gmtkjam21.Game;
 import com.aliyil.gmtkjam21.entity.core.Screen;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.Character;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.GameObjectGrid;
+import com.aliyil.gmtkjam21.entity.gmtkjam21.Goal;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.LevelStart;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.PlayerControl;
 import com.badlogic.gdx.graphics.Color;
@@ -13,7 +14,7 @@ public abstract class Level extends Screen {
 
     protected Character masterCharacter;
     protected Character slaveCharacter;
-    private PlayerControl playerControl;
+    protected PlayerControl playerControl;
 
     public Level(Game game) {
         super(game);
@@ -41,6 +42,11 @@ public abstract class Level extends Screen {
         return tileGrid;
     }
 
+    protected void addGoal(int x, int y){
+        Goal goal = new Goal(getGameInstance());
+        getTileGrid().addObject(goal, x, y);
+    }
+
     @Override
     public void stop() {
         super.stop();
@@ -49,4 +55,5 @@ public abstract class Level extends Screen {
     }
 
     public abstract void toNextLevel();
+    public abstract void restart();
 }
