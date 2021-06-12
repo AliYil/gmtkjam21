@@ -13,7 +13,7 @@ public final class SoundManager {
         float vol = 1f;
         Sound s = gameInstance.getResourceManager().jump;
         s.stop();
-        s.play(vol);
+        s.play(vol, 1.1f, 0);
     }
     public void jump2() {
         float vol = 1f;
@@ -31,7 +31,14 @@ public final class SoundManager {
     public void beep() {
         float vol = 1f;
         Sound s = gameInstance.getResourceManager().beep;
-        s.play(vol);
+        s.play(vol, 1.2f, 0);
+    }
+
+    public void fall() {
+        float vol = 1f;
+        Sound s = gameInstance.getResourceManager().fall;
+        s.stop();
+        s.play(vol, 1f, 0);
     }
 
 //    public void startBackground() {

@@ -2,6 +2,7 @@ package com.aliyil.gmtkjam21.entity.gmtkjam21;
 
 import com.aliyil.gmtkjam21.Game;
 import com.aliyil.gmtkjam21.entity.core.Text;
+import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.Level;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Restart extends Text {
@@ -23,7 +24,7 @@ public class Restart extends Text {
         timer += dts();
 
         if(timer > .5f){
-            onComplete();
+            getLevel().restart();
             kill();
         }
     }
@@ -35,7 +36,7 @@ public class Restart extends Text {
         shapeRenderer.circle(getGameInstance().getCamera().position.x, getGameInstance().getCamera().position.y,timer*(Game.w));
     }
 
-    public void onComplete(){
-
+    private Level getLevel(){
+        return (Level)getGameInstance().getCurrentScreen();
     }
 }

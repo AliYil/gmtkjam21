@@ -3,6 +3,7 @@ package com.aliyil.gmtkjam21.entity.gmtkjam21;
 import com.aliyil.gmtkjam21.Game;
 import com.aliyil.gmtkjam21.entity.core.GameObject;
 import com.aliyil.gmtkjam21.entity.core.SpriteEntity;
+import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.Level;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -14,6 +15,9 @@ public class Character extends SpriteEntity {
     private float animation = 1;
     private Vector2 targetPos = null;
     private Vector2 originalPos = null;
+
+    private float fallAnimation = 0;
+    private boolean isFalling = false;
 
     public Character(Game game, Array<TextureAtlas.AtlasRegion> textures) {
         super(game, .5f, textures);
@@ -34,8 +38,38 @@ public class Character extends SpriteEntity {
                 setPosition(targetPos);
                 targetPos = null;
                 originalPos = null;
+                checkForEffectTiles();
             }
         }
+
+        if(isFalling){
+            fallAnimation += dts()*2;
+            if(fallAnimation > 1f){
+                new Restart(getGameInstance()).start();
+                stop();
+            }else{
+                getSprite().setScale(1-fallAnimation);
+                translateY(-dts()*30);
+            }
+        }
+    }
+
+    private void checkForEffectTiles(){
+        Vector2 gridPos = GameObjectGrid.toGrid(getPosVector());
+        if(getGrid().testObject(Pit.class, gridPos)){
+            if(!isFalling){
+                isFalling = true;
+                getGameInstance().getSoundManager().fall();
+            }
+        }
+    }
+
+    private GameObjectGrid getGrid(){
+        return getLevel().getTileGrid();
+    }
+
+    private Level getLevel(){
+        return (Level)getGameInstance().getCurrentScreen();
     }
 
     public void move(int direction){
@@ -80,6 +114,6 @@ public class Character extends SpriteEntity {
     }
 
     public boolean canMove(){
-        return animation == 1;
+        return animation == 1 && !isFalling;
     }
 }

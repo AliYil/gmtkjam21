@@ -21,7 +21,8 @@ public class PlayerControl extends GameObject {
         super.start();
     }
 
-    private boolean isCharactersAligned = false;
+    public boolean isCharactersAligned = false;
+    public boolean characterAlignmentIndicatorEnabled = true;
 
     @Override
     public boolean keyDown(int keycode) {
@@ -43,12 +44,7 @@ public class PlayerControl extends GameObject {
                 move(3);
                 break;
             case Input.Keys.R:
-                Restart restart = new Restart(getGameInstance()){
-                    @Override
-                    public void onComplete() {
-                        getLevel().restart();
-                    }
-                };
+                Restart restart = new Restart(getGameInstance());
                 restart.start();
                 stop();
                 break;
@@ -128,9 +124,12 @@ public class PlayerControl extends GameObject {
 
             if(masterMoved || slaveMoved){
                 getGameInstance().getSoundManager().jump();
-                Goal goal = (Goal)getGameInstance().getEntityOrNull(Goal.class);
-                Vector2 goalGridPos = GameObjectGrid.toGrid(goal.getPosVector());
-                checkForCharacterAlignment(masterNewGridPos, slaveNewGridPos, goalGridPos);
+
+                if(characterAlignmentIndicatorEnabled){
+                    Goal goal = (Goal)getGameInstance().getEntityOrNull(Goal.class);
+                    Vector2 goalGridPos = GameObjectGrid.toGrid(goal.getPosVector());
+                    checkForCharacterAlignment(masterNewGridPos, slaveNewGridPos, goalGridPos);
+                }
             }else{
                 getGameInstance().getSoundManager().jump2();
             }

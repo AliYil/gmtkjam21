@@ -6,19 +6,23 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class TileBase extends SpriteEntity {
+    protected boolean isOverlay;
     public TileBase(Game game, Texture texture) {
         super(game, texture);
 
         setSize(GameObjectGrid.cellSize, GameObjectGrid.cellSize);
+        isOverlay = false;
     }
 
     @Override
     public void shapeRender(ShapeRenderer shapeRenderer) {
         super.shapeRender(shapeRenderer);
-        float cellSize = GameObjectGrid.cellSize;
-        float cellSizeHalf = cellSize/2f;
-        shapeRenderer.setColor(.1f, .1f, .1f, .06f);
-        shapeRenderer.rect(getX()-cellSizeHalf, getY()-cellSizeHalf, 4, cellSize);
-        shapeRenderer.rect(getX()-cellSizeHalf+4, getY()-cellSizeHalf, cellSize-4, 4);
+        if(!isOverlay){
+            float cellSize = GameObjectGrid.cellSize;
+            float cellSizeHalf = cellSize/2f;
+            shapeRenderer.setColor(.1f, .1f, .1f, .06f);
+            shapeRenderer.rect(getX()-cellSizeHalf, getY()-cellSizeHalf, 4, cellSize);
+            shapeRenderer.rect(getX()-cellSizeHalf+4, getY()-cellSizeHalf, cellSize-4, 4);
+        }
     }
 }

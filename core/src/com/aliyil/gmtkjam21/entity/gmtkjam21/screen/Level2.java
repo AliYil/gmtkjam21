@@ -45,7 +45,7 @@ public class Level2 extends Level {
 
         OrthographicCamera camera = getGameInstance().getCamera();
         camera.position.set(0, 0, 0);
-        camera.zoom = .45f;
+        camera.zoom = .55f;
     }
 
     @Override

@@ -53,7 +53,9 @@ public class Level1 extends Level {
         camera.position.set(0, 0, 0);
         camera.zoom = .7f;
 
-        playerControl.checkForCharacterAlignment(GameObjectGrid.toGrid(masterCharacter.getPosVector()), GameObjectGrid.toGrid(slaveCharacter.getPosVector()),  new Vector2(0, 0));
+        playerControl.characterAlignmentIndicatorEnabled = false;
+
+//        playerControl.checkForCharacterAlignment(GameObjectGrid.toGrid(masterCharacter.getPosVector()), GameObjectGrid.toGrid(slaveCharacter.getPosVector()),  new Vector2(0, 0));
     }
 
     @Override

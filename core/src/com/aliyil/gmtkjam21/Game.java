@@ -246,6 +246,9 @@ public class Game extends ApplicationAdapter {
     }
 
     public <T> Entity getEntityOrNull(Class<T> type){
+        for (Entity entity : addQueue) {
+            if(entity.getClass() == type) return entity;
+        }
         for (Entity entity : entities) {
             if(entity.getClass() == type) return entity;
         }

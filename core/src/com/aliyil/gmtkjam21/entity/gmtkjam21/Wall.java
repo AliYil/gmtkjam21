@@ -13,5 +13,7 @@ public class Wall extends TileBase {
 
         if (Utilities.RANDOM.nextFloat() > 0.5f)
             getSprite().setTexture(game.getResourceManager().tree2);
+
+        isOverlay = true;
     }
 }

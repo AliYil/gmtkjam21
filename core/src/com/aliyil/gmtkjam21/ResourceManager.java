@@ -14,6 +14,7 @@ public final class ResourceManager {
     public Texture grass2;
     public Texture tree1;
     public Texture tree2;
+    public Texture pit;
 
     public TextureAtlas duck1;
     public TextureAtlas duck2;
@@ -22,6 +23,7 @@ public final class ResourceManager {
     public Sound jump;
     public Sound win;
     public Sound beep;
+    public Sound fall;
 
     private Game gameInstance;
     private AssetManager assetManager;
@@ -41,6 +43,7 @@ public final class ResourceManager {
         assetManager.load("sprites/grass2.png", Texture.class);
         assetManager.load("sprites/tree1.png", Texture.class);
         assetManager.load("sprites/tree2.png", Texture.class);
+        assetManager.load("sprites/pit.png", Texture.class);
 
         assetManager.load("sprites/duck1.atlas", TextureAtlas.class);
         assetManager.load("sprites/duck2.atlas", TextureAtlas.class);
@@ -49,6 +52,7 @@ public final class ResourceManager {
         assetManager.load("sounds/jump.wav", Sound.class);
         assetManager.load("sounds/win.wav", Sound.class);
         assetManager.load("sounds/beep.wav", Sound.class);
+        assetManager.load("sounds/fall.wav", Sound.class);
 
         gameInstance.getParticleEffectManager().loadResources();
     }
@@ -65,6 +69,7 @@ public final class ResourceManager {
         grass2 = assetManager.get("sprites/grass2.png", Texture.class);
         tree1 = assetManager.get("sprites/tree1.png", Texture.class);
         tree2 = assetManager.get("sprites/tree2.png", Texture.class);
+        pit = assetManager.get("sprites/pit.png", Texture.class);
 
         duck1 = assetManager.get("sprites/duck1.atlas", TextureAtlas.class);
         duck2 = assetManager.get("sprites/duck2.atlas", TextureAtlas.class);
@@ -73,6 +78,7 @@ public final class ResourceManager {
         jump = assetManager.get("sounds/jump.wav", Sound.class);
         win = assetManager.get("sounds/win.wav", Sound.class);
         beep = assetManager.get("sounds/beep.wav", Sound.class);
+        fall = assetManager.get("sounds/fall.wav", Sound.class);
     }
 
     void dispose() {

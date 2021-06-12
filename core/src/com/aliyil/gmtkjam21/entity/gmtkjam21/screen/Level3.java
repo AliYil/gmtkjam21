@@ -56,12 +56,12 @@ public class Level3 extends Level {
 
         OrthographicCamera camera = getGameInstance().getCamera();
         camera.position.set(-(GameObjectGrid.cellSize/2f), 0, 0);
-        camera.zoom = .45f;
+        camera.zoom = .55f;
     }
 
     @Override
     public void toNextLevel() {
-        new Level3(getGameInstance()).start();
+        new Level4(getGameInstance()).start();
     }
 
     @Override
