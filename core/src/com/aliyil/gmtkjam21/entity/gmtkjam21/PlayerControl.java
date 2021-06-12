@@ -95,7 +95,7 @@ public class PlayerControl extends GameObject {
                 }
             }else{
                 master.move(direction+10);
-                slave.move(reverseDirection(direction)+10);
+//                slave.move(reverseDirection(direction)+10);
             }
 
             if(masterNewGridPos.epsilonEquals(slaveNewGridPos)){
@@ -104,6 +104,8 @@ public class PlayerControl extends GameObject {
                     slave.move(reverseDirection(direction));
                     masterMoved = true;
                     slaveMoved = true;
+
+                    getGameInstance().getParticleEffectManager().newStars(GameObjectGrid.toWorld(masterNewGridPos));
 
                     Win win = new Win(getGameInstance()){
                         @Override
@@ -152,7 +154,8 @@ public class PlayerControl extends GameObject {
         super.shapeRender(shapeRenderer);
         if(isCharactersAligned){
             shapeRenderer.setColor(.1f, 1f, .1f, .2f);
-            shapeRenderer.rectLine(master.getPosVector(), slave.getPosVector(), 5);
+
+            shapeRenderer.rectLine(master.getPosVector().cpy().lerp(slave.getPosVector(), .25f), slave.getPosVector().cpy().lerp(master.getPosVector(), .25f), 5);
         }
     }
 

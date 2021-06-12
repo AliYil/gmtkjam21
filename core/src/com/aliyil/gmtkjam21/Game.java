@@ -102,7 +102,6 @@ public class Game extends ApplicationAdapter {
 //        shapeRenderer.end();
 
         spriteBatch.begin();
-        getParticleEffectManager().renderAllParticles(spriteBatch);
         currentIterator = entities.listIterator();
         while (currentIterator.hasNext()) {
             Entity entity = currentIterator.next();
@@ -118,6 +117,8 @@ public class Game extends ApplicationAdapter {
             }
         }
         currentIterator = null;
+
+        getParticleEffectManager().renderAllParticles(spriteBatch);
         spriteBatch.end();
 
         spriteBatch.setProjectionMatrix(camera.view);

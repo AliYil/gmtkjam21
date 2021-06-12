@@ -16,13 +16,10 @@ public class Level4 extends Level {
     public void start() {
         super.start();
 
-        getTileGrid().addObject(masterCharacter, -2, -1);
-        getTileGrid().addObject(slaveCharacter, 2, 3);
+        getTileGrid().addObject(masterCharacter, -3, 4);
+        getTileGrid().addObject(slaveCharacter, 3, -2);
         addGoal(0, 0);
 
-//        getTileGrid().addObject(new Wall(getGameInstance()), 0, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 0, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 0, -3);
         getTileGrid().addObject(new Wall(getGameInstance()), 0, -2);
         getTileGrid().addObject(new Wall(getGameInstance()), 0, -1);
         getTileGrid().addObject(new Wall(getGameInstance()), 0, 1);
@@ -31,34 +28,10 @@ public class Level4 extends Level {
         getTileGrid().addObject(new Wall(getGameInstance()), 0, 4);
         getTileGrid().addObject(new Wall(getGameInstance()), 0, 5);
 
-//        getTileGrid().addObject(new Wall(getGameInstance()), -1, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -2, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -3, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -4, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -5, -5);
-//
-//        getTileGrid().addObject(new Wall(getGameInstance()), -1, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -2, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -3, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -4, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -5, -4);
-
-//        getTileGrid().addObject(new Wall(getGameInstance()), 1, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 2, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 3, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 4, -5);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 5, -5);
-//
-//        getTileGrid().addObject(new Wall(getGameInstance()), 1, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 2, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 3, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 4, -4);
-//        getTileGrid().addObject(new Wall(getGameInstance()), 5, -4);
-
         getTileGrid().addObject(new Wall(getGameInstance()), 3, 3);
         getTileGrid().addObject(new Wall(getGameInstance()), -4, 0);
         getTileGrid().addObject(new Wall(getGameInstance()), 3, -1);
-//        getTileGrid().addObject(new Wall(getGameInstance()), -3, -1);
+        getTileGrid().addObject(new Wall(getGameInstance()), 1, -2);
 
         getTileGrid().addObject(new Pit(getGameInstance()), -3, 3);
         getTileGrid().addObject(new Pit(getGameInstance()), -3, -2);

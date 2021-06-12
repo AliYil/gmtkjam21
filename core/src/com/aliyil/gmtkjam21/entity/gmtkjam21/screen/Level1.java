@@ -1,9 +1,11 @@
 package com.aliyil.gmtkjam21.entity.gmtkjam21.screen;
 
 import com.aliyil.gmtkjam21.Game;
+import com.aliyil.gmtkjam21.entity.core.SpriteEntity;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.Floor;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.GameObjectGrid;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.Wall;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 
@@ -55,7 +57,32 @@ public class Level1 extends Level {
 
         playerControl.characterAlignmentIndicatorEnabled = false;
 
-//        playerControl.checkForCharacterAlignment(GameObjectGrid.toGrid(masterCharacter.getPosVector()), GameObjectGrid.toGrid(slaveCharacter.getPosVector()),  new Vector2(0, 0));
+        SpriteEntity wasd = new SpriteEntity(getGameInstance(), getGameInstance().getResourceManager().wasd){
+            private float timer = 0;
+
+            @Override
+            public void start() {
+                resizeWidth(GameObjectGrid.cellSize*3);
+                setColor(Color.CHARTREUSE);
+                super.start();
+            }
+
+            @Override
+            public void tick() {
+                super.tick();
+
+                setPosition(masterCharacter.getPosVector());
+
+                timer += dts();
+                if(timer > 6){
+                    kill();
+                }
+
+                setAlpha(timer > 2 || (int)(timer*6) % 2 == 0 ? 1 : 0);
+            }
+        };
+        wasd.zIndex = 6;
+        wasd.start();
     }
 
     @Override

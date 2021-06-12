@@ -1,15 +1,19 @@
 package com.aliyil.gmtkjam21;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 public class ParticleEffectManager {
 
     private Array<PooledEntityEffect> effects;
-    private Game gameInstance;
+    private final Game gameInstance;
 
-//    private ParticleEffectPool growingCirclePool;
+    private ParticleEffectPool starsParticlePool;
 
     public ParticleEffectManager(Game gameInstance) {
         this.gameInstance = gameInstance;
@@ -36,11 +40,11 @@ public class ParticleEffectManager {
     public void loadResources() {
         effects = new Array<PooledEntityEffect>();
 
-//        ParticleEffect growingCircle = new ParticleEffect();
-//        growingCircle.load(Gdx.files.internal("particles/growingcircle.p"), Gdx.files.internal("textures"));
-//        growingCircle.start();
-//        growingCircle.scaleEffect(1f);
-//        growingCirclePool = new ParticleEffectPool(growingCircle, 10, 100);
+        ParticleEffect starsParticle = new ParticleEffect();
+        starsParticle.load(Gdx.files.internal("particles/stars.p"), Gdx.files.internal("sprites"));
+        starsParticle.start();
+        starsParticle.scaleEffect(2f);
+        starsParticlePool = new ParticleEffectPool(starsParticle, 1, 2);
     }
 
     public void releaseResources() {
@@ -58,11 +62,11 @@ public class ParticleEffectManager {
 
     //Should call setCountinuous(true) for all continuous particles
 //
-//    public void newGrowingCircle(float x, float y, float alpha) {
-//        ParticleEffectPool.PooledEffect pooledEffect = growingCirclePool.obtain();
-//        pooledEffect.setPosition(x, y);
-//        pooledEffect.getEmitters().first().getTransparency().setHigh(alpha);
-//        PooledEntityEffect entityEffect = new PooledEntityEffect(pooledEffect);
-//        effects.add(entityEffect);
-//    }
+    public void newStars(Vector2 pos) {
+        ParticleEffectPool.PooledEffect pooledEffect = starsParticlePool.obtain();
+        pooledEffect.setPosition(pos.x, pos.y);
+//        pooledEffect.getEmitters().first().getTransparency().setHigh(1f);
+        PooledEntityEffect entityEffect = new PooledEntityEffect(pooledEffect);
+        effects.add(entityEffect);
+    }
 }

@@ -15,6 +15,7 @@ public final class ResourceManager {
     public Texture tree1;
     public Texture tree2;
     public Texture pit;
+    public Texture wasd;
 
     public TextureAtlas duck1;
     public TextureAtlas duck2;
@@ -44,6 +45,7 @@ public final class ResourceManager {
         assetManager.load("sprites/tree1.png", Texture.class);
         assetManager.load("sprites/tree2.png", Texture.class);
         assetManager.load("sprites/pit.png", Texture.class);
+        assetManager.load("sprites/wasd.png", Texture.class);
 
         assetManager.load("sprites/duck1.atlas", TextureAtlas.class);
         assetManager.load("sprites/duck2.atlas", TextureAtlas.class);
@@ -70,6 +72,7 @@ public final class ResourceManager {
         tree1 = assetManager.get("sprites/tree1.png", Texture.class);
         tree2 = assetManager.get("sprites/tree2.png", Texture.class);
         pit = assetManager.get("sprites/pit.png", Texture.class);
+        wasd = assetManager.get("sprites/wasd.png", Texture.class);
 
         duck1 = assetManager.get("sprites/duck1.atlas", TextureAtlas.class);
         duck2 = assetManager.get("sprites/duck2.atlas", TextureAtlas.class);
