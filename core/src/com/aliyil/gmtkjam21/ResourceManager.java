@@ -16,6 +16,7 @@ public final class ResourceManager {
     public Texture tree2;
     public Texture pit;
     public Texture wasd;
+    public Texture restart;
     public Texture logo;
     public Texture cloud1;
     public Texture cloud2;
@@ -50,6 +51,7 @@ public final class ResourceManager {
         assetManager.load("sprites/tree2.png", Texture.class);
         assetManager.load("sprites/pit.png", Texture.class);
         assetManager.load("sprites/wasd.png", Texture.class);
+        assetManager.load("sprites/restart.png", Texture.class);
         assetManager.load("sprites/logo.png", Texture.class);
         assetManager.load("sprites/cloud1.png", Texture.class);
         assetManager.load("sprites/cloud2.png", Texture.class);
@@ -81,6 +83,7 @@ public final class ResourceManager {
         tree2 = assetManager.get("sprites/tree2.png", Texture.class);
         pit = assetManager.get("sprites/pit.png", Texture.class);
         wasd = assetManager.get("sprites/wasd.png", Texture.class);
+        restart = assetManager.get("sprites/restart.png", Texture.class);
         logo = assetManager.get("sprites/logo.png", Texture.class);
         cloud1 = assetManager.get("sprites/cloud1.png", Texture.class);
         cloud2 = assetManager.get("sprites/cloud2.png", Texture.class);

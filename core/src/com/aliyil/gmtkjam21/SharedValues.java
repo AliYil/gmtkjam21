@@ -16,6 +16,8 @@ public final class SharedValues {
     public float gameSpeed = 1f;
 
     public Color bgColor;
+
+    public boolean restarted = false;
 //    public Rectangle leftRect = new Rectangle(-1000, 0, 1000, Game.h + 1000);
 //    public Rectangle rightRect = new Rectangle(Game.w, 0, 1000, Game.h + 1000);
 //    public Rectangle upRect = new Rectangle(0, Game.h, Game.w, 1000);

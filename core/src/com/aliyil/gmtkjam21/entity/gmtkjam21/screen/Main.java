@@ -5,7 +5,6 @@ import com.aliyil.gmtkjam21.entity.core.Screen;
 import com.aliyil.gmtkjam21.entity.core.SpriteEntity;
 import com.aliyil.gmtkjam21.entity.core.Text;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.Character;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
@@ -66,6 +65,8 @@ public class Main extends Screen {
         OrthographicCamera camera = getGameInstance().getCamera();
         camera.position.set(0, 0, 0);
         camera.zoom = 1f;
+
+        getSharedValues().restarted = false;
 
 //        new Level6(getGameInstance()).start();
     }
