@@ -1,13 +1,10 @@
 package com.aliyil.gmtkjam21.entity.core.screen;
 
-//import DebugInfoText;
-
 import com.aliyil.gmtkjam21.Game;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.Cloud;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.End;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.Level4;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.Main;
-import com.aliyil.gmtkjam21.entity.core.DebugInfoText;
 import com.aliyil.gmtkjam21.entity.core.LoadingBar;
 import com.aliyil.gmtkjam21.entity.core.Screen;
 
@@ -38,8 +35,8 @@ public class LoadingScreen extends Screen {
             getGameInstance().getResourceManager().finishLoading();
 
             new Main(getGameInstance()).start();
-            if (Game.devMode)
-                new DebugInfoText(getGameInstance()).start();
+//            if (Game.devMode)
+//                new DebugInfoText(getGameInstance()).start();
 
             //add clouds
             Cloud cloud1 = new Cloud(getGameInstance(), getGameInstance().getResourceManager().cloud1);

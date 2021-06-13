@@ -80,7 +80,7 @@ project(":html") {
         api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-        api "net.dermetfan.libgdx-utils:libgdx-utils:0.13.4:sources"
+//        api "net.dermetfan.libgdx-utils:libgdx-utils:0.13.4:sources"
         
     }
 }
