@@ -3,6 +3,8 @@ package com.aliyil.gmtkjam21.entity.core.screen;
 //import DebugInfoText;
 
 import com.aliyil.gmtkjam21.Game;
+import com.aliyil.gmtkjam21.entity.gmtkjam21.Cloud;
+import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.End;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.Main;
 import com.aliyil.gmtkjam21.entity.core.DebugInfoText;
 import com.aliyil.gmtkjam21.entity.core.LoadingBar;
@@ -37,6 +39,17 @@ public class LoadingScreen extends Screen {
             new Main(getGameInstance()).start();
             if (Game.devMode)
                 new DebugInfoText(getGameInstance()).start();
+
+            //add clouds
+            Cloud cloud1 = new Cloud(getGameInstance(), getGameInstance().getResourceManager().cloud1);
+            cloud1.setPosition(-1000, 400);
+            cloud1.start();
+            Cloud cloud2 = new Cloud(getGameInstance(), getGameInstance().getResourceManager().cloud2);
+            cloud2.setPosition(0, -200);
+            cloud2.start();
+            Cloud cloud3 = new Cloud(getGameInstance(), getGameInstance().getResourceManager().cloud3);
+            cloud3.setPosition(1000, 0);
+            cloud3.start();
         }
     }
 

@@ -79,6 +79,9 @@ public class Level1 extends Level {
                 }
 
                 setAlpha(timer > 2 || (int)(timer*6) % 2 == 0 ? 1 : 0);
+
+                if(!masterCharacter.isLiving())
+                    kill();
             }
         };
         wasd.zIndex = 6;

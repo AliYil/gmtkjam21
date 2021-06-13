@@ -14,7 +14,7 @@ public class DesktopLauncher{
 		config.backgroundFPS = 0;
 		config.vSyncEnabled = true;
 		config.samples = 8;
-		config.title = "GMTK Jam 2021";
+		config.title = "QUACKTANGLED";
 		new LwjglApplication(new Game(new OsBridge() {
 		}), config);
 	}

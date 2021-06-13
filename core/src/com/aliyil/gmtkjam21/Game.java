@@ -5,6 +5,7 @@ import com.aliyil.gmtkjam21.entity.core.GameObject;
 import com.aliyil.gmtkjam21.entity.core.InputCalculator;
 import com.aliyil.gmtkjam21.entity.core.Screen;
 import com.aliyil.gmtkjam21.entity.core.screen.LoadingScreen;
+import com.aliyil.gmtkjam21.entity.gmtkjam21.Cloud;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -19,6 +20,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -80,6 +84,7 @@ public class Game extends ApplicationAdapter {
         new LoadingScreen(this).start();
         Gdx.input.setCatchBackKey(true);
         getSharedValues().gameElapsed = 0;
+
     }
 
     @Override
@@ -144,15 +149,28 @@ public class Game extends ApplicationAdapter {
         shapeRenderer.end();
 
         //add entities in queue
+
+
+        boolean updated = false;
         for (Entity entity : addQueue) {
             ListIterator<Entity> iterator = entities.listIterator();
-            while (iterator.hasNext()) {
-                if (iterator.next().zIndex >= entity.zIndex)
-                    break;
-            }
+//            while (iterator.hasNext()) {
+//                if (iterator.next().zIndex >= entity.zIndex)
+//                    break;
+//            }
             iterator.add(entity);
+            updated = true;
         }
         addQueue.clear();
+
+        if(updated){
+            Collections.sort(entities, new Comparator<Entity>() {
+                @Override
+                public int compare(Entity e1, Entity e2) {
+                    return e1.zIndex - e2.zIndex;
+                }
+            });
+        }
 
         getSharedValues().gameElapsed += S.d();
     }

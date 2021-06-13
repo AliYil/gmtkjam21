@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Text extends GameObject {
-    private static final float baseScale = 15f;
+    private static final float baseScale = 1f;
     public boolean isStatic;
     public float customWidth = 0;
     public float customHeight = 0;
@@ -22,7 +22,7 @@ public class Text extends GameObject {
 
     public Text(Game game, String text) {
         super(game);
-        scale = 0.5f;
+        scale = 1f;
         boundingRectangle = new Rectangle();
         font = getGameInstance().getResourceManager().bitmapFont;
         font = new BitmapFont(font.getData(), font.getRegion(), false);
@@ -50,7 +50,7 @@ public class Text extends GameObject {
     private void updateGlyphLayout() {
         font.getData().setScale(scale);
         if (glyphLayout == null) {
-            glyphLayout = new GlyphLayout(font, this.text);
+            glyphLayout = new GlyphLayout(font, this.text, getColor(), 100, 3, true);
         } else {
             glyphLayout.setText(font, text);
         }
@@ -137,7 +137,7 @@ public class Text extends GameObject {
     }
 
     public float getCenterX() {
-        return getX() - glyphLayout.width / 2;
+        return getX() - (glyphLayout.width) / 2;
     }
 
     public float getCenterY() {

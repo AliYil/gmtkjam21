@@ -16,6 +16,10 @@ public final class ResourceManager {
     public Texture tree2;
     public Texture pit;
     public Texture wasd;
+    public Texture logo;
+    public Texture cloud1;
+    public Texture cloud2;
+    public Texture cloud3;
 
     public TextureAtlas duck1;
     public TextureAtlas duck2;
@@ -38,7 +42,7 @@ public final class ResourceManager {
     }
 
     void loadResources() {
-        assetManager.load("fonts/font.fnt", BitmapFont.class);
+        assetManager.load("fonts/ka1.fnt", BitmapFont.class);
 
         assetManager.load("sprites/grass1.png", Texture.class);
         assetManager.load("sprites/grass2.png", Texture.class);
@@ -46,6 +50,10 @@ public final class ResourceManager {
         assetManager.load("sprites/tree2.png", Texture.class);
         assetManager.load("sprites/pit.png", Texture.class);
         assetManager.load("sprites/wasd.png", Texture.class);
+        assetManager.load("sprites/logo.png", Texture.class);
+        assetManager.load("sprites/cloud1.png", Texture.class);
+        assetManager.load("sprites/cloud2.png", Texture.class);
+        assetManager.load("sprites/cloud3.png", Texture.class);
 
         assetManager.load("sprites/duck1.atlas", TextureAtlas.class);
         assetManager.load("sprites/duck2.atlas", TextureAtlas.class);
@@ -64,7 +72,7 @@ public final class ResourceManager {
     }
 
     public void finishLoading() {
-        bitmapFont = assetManager.get("fonts/font.fnt", BitmapFont.class);
+        bitmapFont = assetManager.get("fonts/ka1.fnt", BitmapFont.class);
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
         grass1 = assetManager.get("sprites/grass1.png", Texture.class);
@@ -73,6 +81,10 @@ public final class ResourceManager {
         tree2 = assetManager.get("sprites/tree2.png", Texture.class);
         pit = assetManager.get("sprites/pit.png", Texture.class);
         wasd = assetManager.get("sprites/wasd.png", Texture.class);
+        logo = assetManager.get("sprites/logo.png", Texture.class);
+        cloud1 = assetManager.get("sprites/cloud1.png", Texture.class);
+        cloud2 = assetManager.get("sprites/cloud2.png", Texture.class);
+        cloud3 = assetManager.get("sprites/cloud3.png", Texture.class);
 
         duck1 = assetManager.get("sprites/duck1.atlas", TextureAtlas.class);
         duck2 = assetManager.get("sprites/duck2.atlas", TextureAtlas.class);

@@ -98,7 +98,7 @@ public class PlayerControl extends GameObject {
 //                slave.move(reverseDirection(direction)+10);
             }
 
-            if(masterNewGridPos.epsilonEquals(slaveNewGridPos)){
+            if(masterNewGridPos.epsilonEquals(slaveNewGridPos, .1f)){
                 if(getGrid().testObject(Goal.class, masterNewGridPos)){
                     master.move(direction);
                     slave.move(reverseDirection(direction));
@@ -117,7 +117,11 @@ public class PlayerControl extends GameObject {
 
                     stop();
                 }else{
-                    move(reverseDirection(direction));
+                    master.move(direction+10);
+                    slave.move(reverseDirection(direction)+10);
+
+                    masterMoved = false;
+                    slaveMoved = false;
                 }
             }
 

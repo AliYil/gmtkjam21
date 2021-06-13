@@ -22,8 +22,8 @@ public class SpriteEntity extends GameObject {
     private Animation<TextureAtlas.AtlasRegion> animation;
     private int latestKeyframeIndex;
 
-    protected boolean flipHorizontal;
-    protected boolean flipVertical;
+    public boolean flipHorizontal;
+    public boolean flipVertical;
 
     public SpriteEntity(Game game, Texture texture) {
         super(game);

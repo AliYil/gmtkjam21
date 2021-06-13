@@ -16,7 +16,7 @@ public class Level6 extends Level {
     public void start() {
         super.start();
 
-        getTileGrid().addObject(masterCharacter, -2, 0);
+        getTileGrid().addObject(masterCharacter, -1, 0);
         getTileGrid().addObject(slaveCharacter, 3, 0);
         addGoal(0, 0);
 
@@ -24,6 +24,13 @@ public class Level6 extends Level {
         getTileGrid().addObject(new Wall(getGameInstance()), 0, -1);
         getTileGrid().addObject(new Wall(getGameInstance()), 0, 1);
         getTileGrid().addObject(new Pit(getGameInstance()), 0, 2);
+
+//        getTileGrid().addObject(new Wall(getGameInstance()), 4, 0);
+
+        getTileGrid().addObject(new Pit(getGameInstance()), -2, 1);
+        getTileGrid().addObject(new Pit(getGameInstance()), -1, -1);
+
+        getTileGrid().addObject(new Pit(getGameInstance()), 2, -1);
 
         int widthSize = 4;
         int heightSize = 4;
@@ -50,7 +57,7 @@ public class Level6 extends Level {
 
     @Override
     public void toNextLevel() {
-        new Main(getGameInstance()).start();
+        new End(getGameInstance()).start();
     }
 
     @Override
