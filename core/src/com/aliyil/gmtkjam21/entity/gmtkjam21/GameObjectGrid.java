@@ -45,7 +45,9 @@ public class GameObjectGrid {
     }
 
     public static Vector2 toGrid(Vector2 pos){
-        return pos.cpy().scl(1f/cellSize);
+        Vector2 vector2 = pos.cpy().scl(1f/cellSize);
+        vector2.set(Math.round(vector2.x), Math.round(vector2.y));
+        return vector2;
     }
 
     public void killAll(){

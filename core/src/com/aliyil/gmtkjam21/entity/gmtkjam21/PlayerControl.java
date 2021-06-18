@@ -133,8 +133,10 @@ public class PlayerControl extends GameObject {
 
                 if(characterAlignmentIndicatorEnabled){
                     Goal goal = (Goal)getGameInstance().getEntityOrNull(Goal.class);
-                    Vector2 goalGridPos = GameObjectGrid.toGrid(goal.getPosVector());
-                    checkForCharacterAlignment(masterNewGridPos, slaveNewGridPos, goalGridPos);
+                    if(goal != null){
+                        Vector2 goalGridPos = GameObjectGrid.toGrid(goal.getPosVector());
+                        checkForCharacterAlignment(masterNewGridPos, slaveNewGridPos, goalGridPos);
+                    }
                 }
             }else{
                 getGameInstance().getSoundManager().jump2();

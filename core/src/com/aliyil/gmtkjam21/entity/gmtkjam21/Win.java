@@ -33,7 +33,7 @@ public class Win extends Text {
     public void shapeRender(ShapeRenderer shapeRenderer) {
         super.shapeRender(shapeRenderer);
         shapeRenderer.setColor(getSharedValues().bgColor);
-        shapeRenderer.circle(getGameInstance().getCamera().position.x, getGameInstance().getCamera().position.y, (timer-.5f)*(Game.w));
+        shapeRenderer.circle(getGameInstance().getCamera().position.x, getGameInstance().getCamera().position.y, (timer-.7f)*(Game.w));
     }
 
     public void onComplete(){

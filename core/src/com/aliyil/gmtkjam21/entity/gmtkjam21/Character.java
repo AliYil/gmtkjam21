@@ -4,6 +4,8 @@ import com.aliyil.gmtkjam21.Game;
 import com.aliyil.gmtkjam21.entity.core.GameObject;
 import com.aliyil.gmtkjam21.entity.core.SpriteEntity;
 import com.aliyil.gmtkjam21.entity.gmtkjam21.screen.Level;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -111,6 +113,8 @@ public class Character extends SpriteEntity {
             default:
                 throw new RuntimeException("Invalid direction");
         }
+
+        targetPos = GameObjectGrid.toWorld(GameObjectGrid.toGrid(targetPos));
     }
 
     public boolean canMove(){
